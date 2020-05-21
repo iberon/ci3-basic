@@ -29,66 +29,66 @@
 </div>
 
 <script>
-    // $(document).ready(function(){
-    //     $.validator.addMethod("validDate", function(value, element){
-    //         var selectedDate = new Date(value);
-    //         var today = new Date();
-    //         return today > selectedDate;
-    //     });
-    //
-    //     $("#contact_form").validate({
-    //         rules: {
-    //             name: {
-    //                 required: true,
-    //                 maxlength: 128
-    //             },
-    //             email: {
-    //                 required: true,
-    //                 maxlength: 128,
-    //                 email: true
-    //             },
-    //             birth_date: {
-    //                 required: true,
-    //                 validDate: true
-    //             },
-    //             favorite_color: {
-    //                 required: true,
-    //                 maxlength: 25
-    //             }
-    //         },
-    //         messages: {
-    //             name: {
-    //                 required: "Name required",
-    //                 maxlength: "The Name cannot be larger than 128"
-    //             },
-    //             email: {
-    //                 required: "Email required",
-    //                 maxlength: "The Email cannot be larger than 128",
-    //                 email: "Must be a valid Email"
-    //             },
-    //             birth_date: {
-    //                 required: "Birth Date required",
-    //                 validDate: "The Birth Date cannot be after today"
-    //             },
-    //             favorite_color: {
-    //                 required: "Favorite Color required",
-    //                 maxlength: "The Color cannot be larger than 25"
-    //             }
-    //         },
-    //         errorElement: "span",
-    //         errorPlacement: function(error, element) {
-    //             error.appendTo(element.parent());
-    //         },
-    //         submitHandler: function(){
-    //             $(form).ajaxSubmit({
-    //                 complete: function(event) {
-    //                     debugger;
-    //                     $('html').css('cursor', 'default');
-    //                     $('#submit_button').prop('disabled', false);
-    //                 }
-    //             });
-    //         }
-    //
-    //     });
-    // });
+    $(document).ready(function(){
+        $.validator.addMethod("validDate", function(value, element){
+            var selectedDate = new Date(value);
+            var today = new Date();
+            return today > selectedDate;
+        });
+
+        $("#contact_form").validate({
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 128
+                },
+                email: {
+                    required: true,
+                    maxlength: 128,
+                    email: true
+                },
+                birth_date: {
+                    required: true,
+                    validDate: true
+                },
+                favorite_color: {
+                    required: true,
+                    maxlength: 25
+                }
+            },
+            messages: {
+                name: {
+                    required: "Name required",
+                    maxlength: "The Name cannot be larger than 128"
+                },
+                email: {
+                    required: "Email required",
+                    maxlength: "The Email cannot be larger than 128",
+                    email: "Must be a valid Email"
+                },
+                birth_date: {
+                    required: "Birth Date required",
+                    validDate: "The Birth Date cannot be after today"
+                },
+                favorite_color: {
+                    required: "Favorite Color required",
+                    maxlength: "The Color cannot be larger than 25"
+                }
+            },
+            errorElement: "span",
+            errorPlacement: function(error, element) {
+                error.appendTo(element.parent());
+            },
+            submitHandler: function(){
+                $(form).ajaxSubmit({
+                    complete: function(event) {
+                        debugger;
+                        $('html').css('cursor', 'default');
+                        $('#submit_button').prop('disabled', false);
+                    }
+                });
+            }
+
+        });
+    });
 </script>
