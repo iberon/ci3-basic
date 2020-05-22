@@ -79,16 +79,32 @@
             errorPlacement: function(error, element) {
                 error.appendTo(element.parent());
             },
-            submitHandler: function(){
-                $(form).ajaxSubmit({
-                    complete: function(event) {
-                        debugger;
-                        $('html').css('cursor', 'default');
-                        $('#submit_button').prop('disabled', false);
+            invalidHandler: function(event, validator){
+                $("#status_message").remove();
+            },
+            submitHandler: function(event){
+                $("#contact_form").ajaxSubmit({
+                    beforeSubmit: function(){
+                        $("#status_message").remove();
+                    },
+                    complete: function(response) {
+                        if(response.status && response.status === 200){
+                            var success = '<div style="color: green;" id="status_message">Congratulations! You have created a user successfully.</div>';
+                            $(".card").append(success);
+
+                            $("#contact_form").resetForm();
+                        } else {
+                            var error = '<div style="color: green;" id="status_message">Ups! Couldnt create User.</div>';
+                            $(".card").append(error);
+                        }
+
                     }
                 });
             }
+        });
 
+        $('#submit_button').submit(function (e) {
+            e.preventDefault();
         });
     });
 </script>

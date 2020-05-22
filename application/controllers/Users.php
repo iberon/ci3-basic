@@ -45,32 +45,34 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('favorite_color', 'Favorite Color', 'required|max_length[25]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[128]');
 
-        if ($this->form_validation->run() === FALSE)
-        {
+        if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
             $this->load->view('users/create');
             $this->load->view('templates/footer');
-
-        }
-        else
-        {
+        } else {
             $this->user_model->set_user();
 
             $this->load->view('templates/header', $data);
             $this->load->view('users/success');
             $this->load->view('templates/footer');
         }
+
+
+
     }
 
     public function validDate($date){
-        $date_selected = strtotime($date);
-        $date_today = date('dd/mm/yyyy');
+        if(!!$date){
+            $date_today = date('dd/mm/yyyy');
 
-        if($date_today > $date_selected){
-            return True;
-        } else {
-            $this->form_validation->set_message('validDate', '%s should not be greater than Today');
-            return False;
+            if($date_today > $date){
+                return True;
+            } else {
+                $this->form_validation->set_message('validDate', '%s should not be greater than Today');
+                return False;
+            }
         }
+
+        return True;
     }
 }

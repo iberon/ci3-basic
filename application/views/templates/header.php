@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title><?php echo $title; ?></title>
     <script type="text/javascript" src="<?php echo base_url(); ?>resources/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>resources/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>resources/jquery.form.min.js"></script>
     <style type="text/css">
 
         ::selection { background-color: #E13300; color: white; }
